@@ -365,6 +365,58 @@
 // export default app;
 
 
+// import express from 'express';
+// import cors from 'cors';
+// import 'dotenv/config';
+// import path from 'path';
+// import { fileURLToPath } from 'url';
+
+// import connectDB from './config/mongodb.js';
+// import connectCloudinary from './config/cloudinary.js';
+// import userRouter from './routes/userRoute.js';
+// import productRouter from './routes/productRoute.js';
+// import cartRouter from './routes/cartRoute.js';
+// import orderRouter from './routes/orderRoute.js';
+
+// const app = express();
+// const port = process.env.PORT || 4000;
+
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
+
+// // Connect DB & Cloudinary
+// connectDB();
+// connectCloudinary();
+
+// // Middleware
+// app.use(express.json());
+// app.use(cors());
+
+// // API Routes
+// app.use('/api/user', userRouter);
+// app.use('/api/product', productRouter);
+// app.use('/api/cart', cartRouter);
+// app.use('/api/order', orderRouter);
+
+// // Serve Frontend Build
+// app.use(express.static(path.join(__dirname, '..', 'frontend', 'dist')));
+
+// // SPA Fallback
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, '..', 'frontend', 'dist', 'index.html'));
+// });
+
+// // Local only listener
+// if (process.env.NODE_ENV !== 'production') {
+//   app.listen(port, () => {
+//     console.log(`Server running on PORT ${port}`);
+//   });
+// }
+
+// // Export for Vercel
+// export default app;
+
+
 import express from 'express';
 import cors from 'cors';
 import 'dotenv/config';
@@ -398,20 +450,19 @@ app.use('/api/product', productRouter);
 app.use('/api/cart', cartRouter);
 app.use('/api/order', orderRouter);
 
-// Serve Frontend Build
+// Serve frontend build
 app.use(express.static(path.join(__dirname, '..', 'frontend', 'dist')));
 
-// SPA Fallback
+// SPA fallback
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'frontend', 'dist', 'index.html'));
 });
 
-// Local only listener
+// Only listen locally
 if (process.env.NODE_ENV !== 'production') {
   app.listen(port, () => {
     console.log(`Server running on PORT ${port}`);
   });
 }
 
-// Export for Vercel
 export default app;
