@@ -282,6 +282,40 @@
 // }
 
 
+// {
+//   "version": 2,
+//   "builds": [
+//     {
+//       "src": "backend/server.js",
+//       "use": "@vercel/node",
+//       "config": {
+//         "includeFiles": [
+//           "backend/config/**",
+//           "backend/controllers/**",
+//           "backend/middleware/**",
+//           "backend/models/**",
+//           "backend/routes/**"
+//         ]
+//       }
+//     },
+//     {
+//       "src": "frontend/dist/**",
+//       "use": "@vercel/static"
+//     }
+//   ],
+//   "routes": [
+//     {
+//       "src": "/api/(.*)",
+//       "dest": "backend/server.js"
+//     },
+//     {
+//       "src": "/(.*)",
+//       "dest": "frontend/dist/index.html"
+//     }
+//   ]
+// }
+
+
 {
   "version": 2,
   "builds": [
